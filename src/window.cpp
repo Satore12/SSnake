@@ -18,6 +18,7 @@ Window::~Window()
 void
 Window::setup(const std::string& title, const sf::Vector2u& size)
 {
+    m_windowClearColor = sf::Color::Black;
     m_isDone = false;
     m_windowTitle = title;
     m_windowSize = size;
@@ -54,5 +55,30 @@ bool
 Window::getIsDone()
 {
     return m_isDone;
+}
+
+
+void
+Window::beginDraw()
+{
+    m_window.clear(m_windowClearColor);
+}
+
+void
+Window::endDraw()
+{
+    m_window.display();
+}
+
+void
+Window::draw(sf::Drawable& toDraw)
+{
+    m_window.draw(toDraw);
+}
+
+void
+Window::setClearColor(sf::Color color)
+{
+    m_windowClearColor = color;
 }
 
